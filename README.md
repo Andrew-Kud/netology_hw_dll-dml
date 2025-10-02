@@ -4,25 +4,47 @@
 
 ### Задание 1
 
-`Приведите ответ в свободной форме........`
-
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
-
 ```
-Поле для вставки кода...
-....
-....
-....
-....
+docker run --name mysql-sys -e MYSQL_ROOT_PASSWORD=rootpass123 -p 3306:3306 -d mysql:8.0
+```
+```
+CREATE USER 'sys_temp'@'%' IDENTIFIED BY 'temppass123';
+```
+```
+SELECT User, Host FROM mysql.user;
+```
+```
+GRANT ALL PRIVILEGES ON *.* TO 'sys_temp'@'%';
+FLUSH PRIVILEGES;
+```
+```
+SHOW GRANTS FOR 'sys_temp'@'%';
+```
+```
+ALTER USER 'sys_temp'@'%' IDENTIFIED WITH mysql_native_password BY 'temppass123';
+```
+```
+CREATE DATABASE IF NOT EXISTS sakila;
+USE sakila;
+SOURCE /tmp/sakila-schema.sql;
+SOURCE /tmp/sakila-data.sql;
+```
+```
+USE sakila;
+SHOW TABLES;
+```
+```
+docker cp sakila-db/sakila-schema.sql mysql-sys:/tmp/
+docker cp sakila-db/sakila-data.sql mysql-sys:/tmp/
+docker exec -it mysql-sys mysql -usys_temp -ptemppass123
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 1](ссылка на скриншот 1)`
+<img width="1017" height="298" alt="1" src="https://github.com/user-attachments/assets/11c0769c-0f70-4ee7-ba96-a18907a2b5c0" />
+
+<img width="1285" height="658" alt="2" src="https://github.com/user-attachments/assets/0fc3707b-326b-44ec-b4d4-5e6735dbbced" />
+
+<img width="1279" height="636" alt="3" src="https://github.com/user-attachments/assets/79f9a975-e395-4fdc-9c71-962d9408e3d4" />
+
 
 
 ---
