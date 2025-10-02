@@ -38,6 +38,9 @@ docker cp sakila-db/sakila-schema.sql mysql-sys:/tmp/
 docker cp sakila-db/sakila-data.sql mysql-sys:/tmp/
 docker exec -it mysql-sys mysql -usys_temp -ptemppass123
 ```
+```
+docker exec -it mysql-sys mysql -usys_temp -ptemppass123 -e "SELECT COUNT(*) FROM sakila.actor;"
+```
 
 <img width="1017" height="298" alt="1" src="https://github.com/user-attachments/assets/11c0769c-0f70-4ee7-ba96-a18907a2b5c0" />
 
