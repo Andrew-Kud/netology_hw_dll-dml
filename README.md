@@ -54,25 +54,20 @@ docker exec -it mysql-sys mysql -usys_temp -ptemppass123 -e "SELECT COUNT(*) FRO
 
 ### Задание 2
 
-`Приведите ответ в свободной форме........`
-
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
-
 ```
-Поле для вставки кода...
-....
-....
-....
-....
+docker exec -it mysql-sys mysql -usys_temp -ptemppass123 -e "
+SELECT 
+    TABLE_NAME AS 'Название таблицы',
+    COLUMN_NAME AS 'Название первичного ключа'
+FROM information_schema.KEY_COLUMN_USAGE
+WHERE 
+    CONSTRAINT_SCHEMA = 'sakila'
+    AND CONSTRAINT_NAME = 'PRIMARY'
+ORDER BY TABLE_NAME;
+"
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 2](ссылка на скриншот 2)`
+<img width="969" height="564" alt="4" src="https://github.com/user-attachments/assets/4f6b8ee2-9a86-4d09-87e6-3834e8feed2a" />
 
 
 ---
